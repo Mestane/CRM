@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 
+
+// Demo Controller
 @Controller
 @RequestMapping("/init")
 

@@ -1,5 +1,12 @@
 package com.tutorial.CRM.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+// Employee Entity
+
+@Entity
+@Table(name = "employee")
 public class Employee {
 
     private int id;
@@ -10,9 +17,12 @@ public class Employee {
 
     private String email;
 
+//    default constructor
 
     public Employee() {
     }
+
+//    with id constructor
 
     public Employee(int id, String firstName, String lastName, String email) {
         this.id = id;
@@ -21,11 +31,15 @@ public class Employee {
         this.email = email;
     }
 
+//    without id constructor
+
     public Employee(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
+
+//    define getter/setter
 
     public int getId() {
         return id;
@@ -58,6 +72,8 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+
+//    toString generate
 
     @Override
     public String toString() {
