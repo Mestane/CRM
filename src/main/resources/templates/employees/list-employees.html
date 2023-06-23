@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Employee Directory</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+
+    <h3>list of employee</h3>
+    <hr>
+    <a th:href="@{/employees/add}" class="btn btn-primary btn-sm mb-3"> Add Employee</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempEmployee:${employees}">
+
+            <td th:text="${tempEmployee.firstName}"/>
+            <td th:text="${tempEmployee.lastName}"/>
+            <td th:text="${tempEmployee.email}"/>
+
+        </tr>
+        </tbody>
+
+
+    </table>
+
+</div>
+
+</body>
+</html>
