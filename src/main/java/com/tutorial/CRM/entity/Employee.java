@@ -1,6 +1,8 @@
 package com.tutorial.CRM.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 
 // Employee Entity
 
@@ -13,7 +15,9 @@ public class Employee {
     @Column(name = "id")
     private int id;
 
+
     @Column(name = "first_name")
+    @NotBlank(message = "Name not be blank")
     private String firstName;
 
     @Column(name = "last_name")

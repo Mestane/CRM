@@ -2,8 +2,10 @@ package com.tutorial.CRM.controller;
 
 import com.tutorial.CRM.entity.Employee;
 import com.tutorial.CRM.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,13 +46,16 @@ public class EmployeeController {
     }
 
     @PostMapping("/save")
-    public String formSave(@ModelAttribute("employee") Employee theEmployee) {
+    public String formSave(@Valid @ModelAttribute("employee") Employee theEmployee, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+
+            return "employees/employee-form";
+        }
 
         employeeService.save(theEmployee);
 
         return "redirect:/employees/list";
-
-
     }
 
 }
