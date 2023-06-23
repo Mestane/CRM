@@ -6,10 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -58,4 +55,23 @@ public class EmployeeController {
         return "redirect:/employees/list";
     }
 
+    @GetMapping("/update")
+    public String formUpdate(@RequestParam("employeeId") int theId, Model model) {
+
+        Employee theEmployee = employeeService.findById(theId);
+
+        model.addAttribute("employee", theEmployee);
+
+
+        return "employees/employee-form";
+    }
+
+    @GetMapping("/delete")
+    public String formSave(@RequestParam("employeeId") int theId) {
+
+        employeeService.deleteById(theId);
+
+        return "redirect:/employees/list";
+
+    }
 }
