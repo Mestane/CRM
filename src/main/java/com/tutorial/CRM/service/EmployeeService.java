@@ -15,6 +15,11 @@ public interface EmployeeService {
 
     void deleteById(int theId);
 
+//    List<Employee> searchEmployee(String theSearchName);
+
+    List<Employee> searchEmployees(String searchName);
+
+//    List<Employee> searchAnyWords(String anyWords);
 
 
 }

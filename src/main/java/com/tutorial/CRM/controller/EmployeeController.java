@@ -72,6 +72,19 @@ public class EmployeeController {
         employeeService.deleteById(theId);
 
         return "redirect:/employees/list";
+    }
+
+    @GetMapping("/search")
+    public String searchEmployee(@RequestParam("theEmployeeName") String theName, Model model) {
+
+        List<Employee> theEmployee = employeeService.searchEmployees(theName);
+
+        model.addAttribute("employees", theEmployee);
+
+
+        return "employees/list-employees";
 
     }
+
+
 }
