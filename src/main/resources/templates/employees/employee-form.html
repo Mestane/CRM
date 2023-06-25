@@ -29,6 +29,10 @@
     <form action="#" th:action="@{/employees/save}" th:object="${employee}" method="post"
           class="row  needs-validation novalidate">
 
+        <!--  This line takes the id of which employees will be updated. important don't change it     -->
+        <input type="hidden" th:field="*{id}">
+
+
         <div class="row">
             <div class="col-md-4 ">
                 <div class="form-outline custom-margin">
