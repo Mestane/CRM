@@ -11,9 +11,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     //    List<Employee> findAllByOrderByLastNameAsc();
     List<Employee> findAllByOrderByFirstNameAsc();
 
-//    List<Employee> searchAllBy();
 
-    List<Employee> searchEmployeeByFirstName(@NotBlank(message = "Name not be blank") String firstName);
+//    List<Employee> searchEmployeeByFirstName(@NotBlank(message = "Name not be blank") String firstName);
+
+    List<Employee> findAllByFirstNameContainingOrLastNameContaining(@NotBlank(message = "Name not be blank") String firstName, String lastName);
 
 
 }

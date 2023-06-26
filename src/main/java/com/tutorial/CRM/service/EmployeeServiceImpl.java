@@ -56,12 +56,21 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public List<Employee> searchEmployees(String firstName, String lastName) {
+
+
+        return employeeRepository.findAllByFirstNameContainingOrLastNameContaining(firstName, lastName);
+
+    }
+
+   /*
+    @Override
     public List<Employee> searchEmployees(String theSearchName) {
 
         return employeeRepository.searchEmployeeByFirstName(theSearchName);
 
     }
-
+*/
 
 
 }
