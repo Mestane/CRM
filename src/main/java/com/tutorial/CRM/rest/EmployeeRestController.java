@@ -56,6 +56,9 @@ public class EmployeeRestController {
 
     }
 
+//     default spring security username: user
+//     default spring security user password:1142be6e-fc84-405a-a221-29e9a8bad54f
+
 
     //    add employees
     @PostMapping("/employees")
