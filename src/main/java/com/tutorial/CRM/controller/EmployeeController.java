@@ -28,6 +28,7 @@ public class EmployeeController {
 
         model.addAttribute("employees", theEmployee);
 
+
         return "employees/list-employees";
 
     }
@@ -61,7 +62,6 @@ public class EmployeeController {
         Employee theEmployee = employeeService.findById(theId);
 
         model.addAttribute("employee", theEmployee);
-
 
         return "employees/employee-form";
     }

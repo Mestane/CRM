@@ -1,7 +1,10 @@
 package com.tutorial.CRM.rest;
 
 import com.tutorial.CRM.entity.Employee;
+import com.tutorial.CRM.exception.EmployeeErrorResponse;
 import com.tutorial.CRM.service.EmployeeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,12 +39,23 @@ public class EmployeeRestController {
 
         Employee theEmployee = employeeService.findById(employeeId);
 
+/*
+        List<Employee> employeeList = employeeService.findAll();
+
         if (theEmployee == null) {
             throw new RuntimeException("Employee id not found - " + employeeId);
         }
 
+        if ((employeeId < 0)) {
+
+            throw new EmployeeNotFoundException("Employee id not found - " + employeeId);
+
+        }
+*/
         return theEmployee;
+
     }
+
 
     //    add employees
     @PostMapping("/employees")
@@ -72,8 +86,20 @@ public class EmployeeRestController {
     public Employee updateEmployee(@RequestBody Employee theEmployee) {
 
         return employeeService.save(theEmployee);
-
     }
 
+    @ExceptionHandler
+    public ResponseEntity<EmployeeErrorResponse> handleException(Exception exception) {
 
+        EmployeeErrorResponse employeeErrorResponse = new EmployeeErrorResponse();
+
+        employeeErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+        employeeErrorResponse.setMessage(exception.getMessage());
+        employeeErrorResponse.setTimeStamp(System.currentTimeMillis());
+
+
+        return new ResponseEntity<>(employeeErrorResponse, HttpStatus.BAD_REQUEST);
+
+    }
 }
+

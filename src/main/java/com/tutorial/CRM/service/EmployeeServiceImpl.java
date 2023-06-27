@@ -34,11 +34,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (result.isPresent()) {
             theEmployee = result.get();
         } else {
+
             throw new RuntimeException("Did not find -" + theId);
         }
 
         return theEmployee;
-
     }
 
     @Override
