@@ -34,11 +34,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (result.isPresent()) {
             theEmployee = result.get();
         } else {
+
             throw new RuntimeException("Did not find -" + theId);
         }
 
         return theEmployee;
-
     }
 
     @Override
@@ -54,5 +54,23 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(theId);
 
     }
+
+    @Override
+    public List<Employee> searchEmployees(String firstName, String lastName) {
+
+
+        return employeeRepository.findAllByFirstNameContainingOrLastNameContaining(firstName, lastName);
+
+    }
+
+   /*
+    @Override
+    public List<Employee> searchEmployees(String theSearchName) {
+
+        return employeeRepository.searchEmployeeByFirstName(theSearchName);
+
+    }
+*/
+
 
 }

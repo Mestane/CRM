@@ -16,5 +16,9 @@ public interface EmployeeService {
     void deleteById(int theId);
 
 
+//    List<Employee> searchEmployees(String searchName);
+
+    List<Employee> searchEmployees(String firstName, String lastName);
+
 
 }

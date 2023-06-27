@@ -28,6 +28,7 @@ public class EmployeeController {
 
         model.addAttribute("employees", theEmployee);
 
+
         return "employees/list-employees";
 
     }
@@ -62,7 +63,6 @@ public class EmployeeController {
 
         model.addAttribute("employee", theEmployee);
 
-
         return "employees/employee-form";
     }
 
@@ -72,6 +72,31 @@ public class EmployeeController {
         employeeService.deleteById(theId);
 
         return "redirect:/employees/list";
+    }
+
+
+    @GetMapping("/search")
+    public String searchEmployee(@RequestParam("anyWordsForNameOrLastName") String firstName, @RequestParam("anyWordsForNameOrLastName") String lastName, Model model) {
+
+        List<Employee> theEmployee = employeeService.searchEmployees(firstName, lastName);
+
+        model.addAttribute("employees", theEmployee);
+
+
+        return "employees/list-employees";
 
     }
+
+/*
+    @GetMapping("/search")
+    public String searchEmployee(@RequestParam("theEmployeeName") String theName, Model model) {
+
+        List<Employee> theEmployee = employeeService.searchEmployees(theName);
+        model.addAttribute("employees", theEmployee);
+
+        return "employees/list-employees";
+
+    }
+*/
+
 }
